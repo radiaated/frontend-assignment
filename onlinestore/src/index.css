@@ -1,0 +1,58 @@
+@import url("../node_modules/@fortawesome/fontawesome-free/css/all.min.css");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-Roboto;
+  }
+
+  h2 {
+    @apply text-2xl font-medium mb-2;
+  }
+
+  h3 {
+    @apply text-2xl font-medium mb-1;
+  }
+
+  .product-card {
+    @apply bg-white pb-2;
+  }
+
+  .btn-full {
+    @apply bg-violet-800 text-zinc-50 font-medium text-xl p-4 w-full block text-center rounded-sm hover:bg-violet-700;
+  }
+
+  /* .next-pg-btn {
+    @apply 
+  } */
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.img-scroll {
+  overflow-x: scroll;
+}
+
+.img-scroll::-webkit-scrollbar {
+  height: 6px; /* height of horizontal scrollbar ← You're missing this */
+  border: 1px solid #d5d5d5;
+  border-radius: 4px;
+}
+.img-scroll::-webkit-scrollbar-track {
+  background-color: rgb(236, 236, 236);
+  border-radius: 4px;
+}
+
+.img-scroll::-webkit-scrollbar-thumb {
+  background-color: #818b99;
+  border-radius: 4px;
+}
