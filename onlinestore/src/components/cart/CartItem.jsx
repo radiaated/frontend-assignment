@@ -18,7 +18,7 @@ const CartItem = ({ cart, ind }) => {
         <img
           src={cart.thumbnail}
           alt=""
-          className="h-20 w-full object-cover rounded-sm"
+          className="h-36 md:h-20 w-full object-cover rounded-sm "
         />
       </div>
       <div className="md:col-span-2 lg:col-span-4">

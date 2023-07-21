@@ -16,7 +16,9 @@ const SearchPage = () => {
   });
 
   const fetchSearchProduct = (search) => {
-    return axios.get(`https://dummyjson.com/products/search?q=${search}`);
+    return axios.get(
+      `${import.meta.env.VITE_API_URL}/products/search?q=${search}`
+    );
   };
 
   return (
@@ -32,7 +34,7 @@ const SearchPage = () => {
         {qs.get("q")?.length > 0 ? `"${qs.get("q")}"` : "No search"}
       </p>
       <hr className="mb-4" />
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {isLoading ? (
           Array.from(Array(5).keys()).map((k) => (
             <div className="animate-pulse h-64 w-full bg-zinc-200 rounded-sm"></div>

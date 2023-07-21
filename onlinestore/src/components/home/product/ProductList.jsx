@@ -16,7 +16,9 @@ const ProductList = ({ category }) => {
       );
     }
     console.log("uwu");
-    return axios.get(`https://dummyjson.com/products?limit=5&skip=${skip}`);
+    return axios.get(
+      `${import.meta.env.VITE_API_URL}/products?limit=5&skip=${skip}`
+    );
   };
 
   // const { data } = useQuery(["product-category", skip], (skip) =>
@@ -42,7 +44,7 @@ const ProductList = ({ category }) => {
   return (
     <div className="pb-8 pt-4">
       <h2>{category ? category : "All Products"}</h2>
-      <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-1 gap-6">
+      <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
         {isLoading ? (
           Array.from(Array(5).keys()).map((k) => (
             <div className="animate-pulse h-64 w-full bg-zinc-200 rounded-sm"></div>

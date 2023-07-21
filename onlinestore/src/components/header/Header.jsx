@@ -12,32 +12,36 @@ const Header = () => {
   console.log(location.pathname);
 
   return (
-    <header className="bg-violet-900 text-zinc-50 px-6 pb-6 shadow-md">
-      {menu && (
-        <div className="fixed top-0 left-0 bg-violet-800 w-full h-full p-4 md:hidden">
-          <button onClick={() => setMenu(false)}>
-            <i class="fa-solid fa-arrow-left text-4xl"></i>
-          </button>
-          <div className="flex flex-col gap-4 divide-y divide-zinc-100 text-4xl p-4">
-            <Link to="/" className="py-4" onClick={() => setMenu(false)}>
-              Home
-            </Link>
-            <Link to="/cart" className="py-4" onClick={() => setMenu(false)}>
-              Cart
-            </Link>
-            <Link to="/search" className="py-4" onClick={() => setMenu(false)}>
-              Search
-            </Link>
-          </div>
+    <header className="bg-violet-900 text-zinc-50 pb-6 shadow-md z-[99]">
+      {/* {menu && ( */}
+      <div
+        className={`fixed z-50 top-0 left-0 bg-violet-800 w-full h-full p-4 md:hidden ${
+          menu ? "translate-x-[0%]" : "translate-x-[100%]"
+        } transition-all duration-200 ease-in-out`}
+      >
+        <button onClick={() => setMenu(false)}>
+          <i class="fa-solid fa-arrow-left text-4xl"></i>
+        </button>
+        <div className="flex flex-col gap-4 divide-y divide-zinc-100 text-4xl p-4">
+          <Link to="/" className="py-4" onClick={() => setMenu(false)}>
+            Home
+          </Link>
+          <Link to="/cart" className="py-4" onClick={() => setMenu(false)}>
+            Cart
+          </Link>
+          <Link to="/search" className="py-4" onClick={() => setMenu(false)}>
+            Search
+          </Link>
         </div>
-      )}
+      </div>
+      {/* )}
+       */}
 
       <div className="text-right container w-[90%] mx-auto py-2 text-xs hover:text-zinc-100">
         <Link to="/cart" className="text-right">
           Cart <i class="fa-solid fa-cart-shopping"></i> ({cart.length})
         </Link>
       </div>
-
       <div className="flex justify-between items-center container w-[90%] mx-auto">
         <Link to="/" className="text-3xl tracking-wider font-semibold ">
           Online Store
@@ -75,11 +79,13 @@ const Header = () => {
           <i class="fa-solid fa-bars"></i>
         </button>
 
-        {location.pathname !== "/search" && (
-          <div className="hidden md:flex">
-            <SearchBox />
-          </div>
-        )}
+        <div
+          className={`hidden md:flex ${
+            location.pathname === "/search" ? "opacity-0" : ""
+          }`}
+        >
+          <SearchBox />
+        </div>
       </div>
     </header>
   );

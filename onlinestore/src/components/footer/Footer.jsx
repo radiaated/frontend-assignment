@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-violet-200 mt-24 ">
+    <footer className="bg-violet-200 mt-24">
       <div className="w-[1400px] mx-auto max-w-[90%] py-16 text-violet-950">
-        <div className="grid grid-cols-5">
-          <div className="col-span-2">
+        <div className="sm:grid sm:grid-cols-5 space-y-8">
+          <div className="sm:col-span-2">
             <h3 className="text-3xl font-medium">Online Store</h3>
             <hr className="my-2 h-px bg-violet-400 border-0" />
             <p className="text-sm tracking-wide">
@@ -16,7 +16,7 @@ const Footer = () => {
               delectus quas!
             </p>
           </div>
-          <div className="col-start-4">
+          <div className="sm:col-start-4">
             <ul className="underline cursor-pointer">
               <li>
                 <Link to="/">Home</Link>
@@ -29,7 +29,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="col-start-5">
+          <div className="sm:col-start-5">
             <h3 className="text-lg">Contact</h3>
             <hr className="my-2 h-px bg-violet-400 border-0" />
             <div className="flex text-2xl gap-4 mb-2">
