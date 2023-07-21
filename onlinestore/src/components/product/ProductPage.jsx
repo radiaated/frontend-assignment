@@ -79,6 +79,7 @@ const ProductPage = () => {
                       imageHover == ind ? "outline outline-1" : ""
                     }`}
                     onMouseOver={() => setImageHover(ind)}
+                    onClick={() => setImageHover(ind)}
                   />
                 ))}
               </div>
@@ -86,12 +87,12 @@ const ProductPage = () => {
                 <img
                   src={product?.data.images[imageHover]}
                   alt=""
-                  className="block w-full h-96 object-contain rounded-sm border border-zinc-300"
+                  className="block w-full h-96 object-contain rounded-sm border border-zinc-300 shadow-md"
                 />
               </div>
             </div>
           </div>
-          <div className="col-span-4 md:col-span-2 p-4 border border-zinc-400 rounded-sm h-fit space-y-4 mt-8 w-full">
+          <div className="col-span-4 md:col-span-2 p-4 border border-zinc-400 rounded-sm h-fit space-y-4 mt-8 w-full shadow-md">
             <p>{product?.data.description}</p>
 
             <hr />
@@ -111,7 +112,9 @@ const ProductPage = () => {
                   product?.data.price *
                     (product?.data.discountPercentage / 100) *
                     qty
-                ).toFixed(2)}{" "}
+                )
+                  .toFixed(2)
+                  .toLocaleString()}{" "}
                 <span className="text-xl font-normal">
                   - {product?.data.discountPercentage}%
                 </span>

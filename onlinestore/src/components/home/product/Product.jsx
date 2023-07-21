@@ -10,7 +10,7 @@ const Product = ({ product }) => {
   return (
     <Link
       to={`/product/${product.id}`}
-      className="product-card space-y-1 group hover:bg-zinc-50  cursor-pointer border border-zinc-200 rounded-md shadow-sm"
+      className="space-y-1 group hover:bg-zinc-50  cursor-pointer border border-zinc-200 rounded-md shadow-sm"
     >
       <div className="bg-white w-full">
         <img
@@ -19,17 +19,19 @@ const Product = ({ product }) => {
           className="h-36 object-center object-cover w-full rounded-md"
         />
       </div>
-      <div className="px-2 space-y-1">
+      <div className="px-3 pb-1 space-y-1">
         <div className="font-medium text-md truncate text-lg">
           {product.title}
         </div>
-        <div className="bg-zinc-100 border border-zinc-200 px-1 py-[0.5] w-fit text-sm text-zinc-700">
+        <div className="bg-zinc-100 border border-zinc-200 px-1 py-[0.5] w-fit text-xs text-zinc-700">
           {product.category[0].toUpperCase() + product.category.slice(1)}
         </div>
         <div className="flex gap-1 items-center text-sm">
           <StarRating rating={product.rating} />
         </div>
-        <div className="font-medium text-lg">$ {product.price}</div>
+        <div className="font-medium text-lg">
+          $ {product.price.toLocaleString()}
+        </div>
       </div>
     </Link>
   );

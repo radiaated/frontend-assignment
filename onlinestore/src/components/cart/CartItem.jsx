@@ -39,20 +39,21 @@ const CartItem = ({ cart, ind }) => {
 
         <div className="text-xl font-semibold">
           ${" "}
-          {(
-            qty * cart.price -
-            cart.price * (cart.discountPercentage / 100) * qty
-          ).toFixed(2)}{" "}
+          {Number(
+            (
+              qty * cart.price -
+              cart.price * (cart.discountPercentage / 100) * qty
+            ).toFixed(2)
+          ).toLocaleString()}{" "}
           <br />
-          <span className="text-xs font-normal italic">
-            with {cart.discountPercentage}%
+          <span className="text-xs font-normal">
+            + {cart.discountPercentage}% off
           </span>
-          <span className="font-normal text-sm"> off</span>
         </div>
       </div>
-      <div className="flex flex-row md:flex-col gap-2 text-center my-auto">
+      <div className="flex flex-row md:flex-col gap-2 text-center my-auto text-sm ">
         <button
-          className="text-blue-500 hover:underline hover:underline-offset-1"
+          className=" hover:underline hover:underline-offset-1"
           onClick={() => {
             navigate(`/product/${cart.id}`);
           }}
@@ -60,7 +61,7 @@ const CartItem = ({ cart, ind }) => {
           Update
         </button>
         <button
-          className="text-red-500 hover:underline hover:underline-offset-1"
+          className="hover:underline hover:underline-offset-1"
           onClick={() => dispatch(appActions.removeFromCart(ind))}
         >
           Remove

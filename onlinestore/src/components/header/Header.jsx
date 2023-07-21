@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useSearchParams, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import SearchBox from "../search/SearchBox";
@@ -7,6 +7,9 @@ import SearchBox from "../search/SearchBox";
 const Header = () => {
   const { cart } = useSelector((state) => state.app);
   const [menu, setMenu] = useState(false);
+  const location = useLocation();
+
+  console.log(location.pathname);
 
   return (
     <header className="bg-violet-900 text-zinc-50 px-6 pb-6 shadow-md">
@@ -22,11 +25,14 @@ const Header = () => {
             <Link to="/cart" className="py-4" onClick={() => setMenu(false)}>
               Cart
             </Link>
+            <Link to="/search" className="py-4" onClick={() => setMenu(false)}>
+              Search
+            </Link>
           </div>
         </div>
       )}
 
-      <div className="text-right container w-[90%] mx-auto py-2 text-sm hover:text-zinc-100">
+      <div className="text-right container w-[90%] mx-auto py-2 text-xs hover:text-zinc-100">
         <Link to="/cart" className="text-right">
           Cart <i class="fa-solid fa-cart-shopping"></i> ({cart.length})
         </Link>
@@ -46,6 +52,14 @@ const Header = () => {
             Home
           </NavLink>
           <NavLink
+            to="/search"
+            className={({ isActive, isPending }) =>
+              isActive ? "border-b border-zinc-50 px-4 text-center" : "px-4"
+            }
+          >
+            Search
+          </NavLink>
+          <NavLink
             to="/cart"
             className={({ isActive, isPending }) =>
               isActive ? "border-b border-zinc-50 px-4 text-center" : "px-4"
@@ -61,9 +75,11 @@ const Header = () => {
           <i class="fa-solid fa-bars"></i>
         </button>
 
-        <div className="hidden md:flex">
-          <SearchBox />
-        </div>
+        {location.pathname !== "/search" && (
+          <div className="hidden md:flex">
+            <SearchBox />
+          </div>
+        )}
       </div>
     </header>
   );
