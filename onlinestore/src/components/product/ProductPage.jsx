@@ -26,6 +26,9 @@ const ProductPage = () => {
   } = useQuery({
     queryKey: ["product", params.id],
     queryFn: () => fetchProductById(params.id),
+    onSuccess: (prd) => {
+      document.title = prd?.data.title + " - Online Store";
+    },
   });
 
   const fetchProductById = (id) => {

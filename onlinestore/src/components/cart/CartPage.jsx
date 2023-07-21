@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 const CartPage = () => {
   const { cart } = useSelector((state) => state.app);
 
+  document.title = "Cart - Online Store";
+
   return (
     <div>
       <h2>Cart</h2>

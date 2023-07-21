@@ -13,6 +13,11 @@ const SearchPage = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["search-product", qs.get("q")],
     queryFn: () => fetchSearchProduct(qs.get("q")),
+    onSuccess: () => {
+      document.title = `Search: ${
+        qs.get("q") ? qs.get("q") : ""
+      } - Online Store`;
+    },
   });
 
   const fetchSearchProduct = (search) => {

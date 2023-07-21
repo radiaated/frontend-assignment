@@ -61,7 +61,7 @@ const CartItem = ({ cart, ind }) => {
           Update
         </button>
         <button
-          className="hover:underline hover:underline-offset-1"
+          className="hover:underline hover:underline-offset-1 text-red-500"
           onClick={() => dispatch(appActions.removeFromCart(ind))}
         >
           Remove
