@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import QuantityBox from "../utils/QuantityBox";
 import StarRating from "../utils/StarRating";
 import { useNavigate } from "react-router-dom";
 

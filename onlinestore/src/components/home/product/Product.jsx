@@ -3,10 +3,6 @@ import StarRating from "../../utils/StarRating";
 import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
-  // if (isLoading) {
-  //   return <div className="animate-pulse bg-zinc-200 h-64 w-full"></div>;
-  // }
-
   return (
     <Link
       to={`/product/${product.id}`}
@@ -16,7 +12,7 @@ const Product = ({ product }) => {
         <img
           src={product.thumbnail}
           alt=""
-          className="h-36 object-center object-cover w-full rounded-md"
+          className="h-64 md:h-36 object-center object-cover w-full rounded-md"
         />
       </div>
       <div className="px-3 pb-1 space-y-1">
@@ -27,7 +23,7 @@ const Product = ({ product }) => {
           {product.category[0].toUpperCase() + product.category.slice(1)}
         </div>
         <div className="flex gap-1 items-center text-sm">
-          <StarRating rating={product.rating} />
+          <StarRating rating={product.rating} /> ({product.rating})
         </div>
         <div className="font-medium text-lg">
           $ {product.price.toLocaleString()}

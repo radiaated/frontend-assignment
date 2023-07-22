@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
-import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const { cart } = useSelector((state) => state.app);
@@ -16,7 +15,7 @@ const CartPage = () => {
           {cart.length === 0 ? (
             <div className="p-8 text-center">Empty !</div>
           ) : (
-            cart.map((ca, ind) => <CartItem cart={ca} ind={ind} />)
+            cart.map((ca, ind) => <CartItem key={ca.id} cart={ca} ind={ind} />)
           )}
         </div>
         <div className="col-span-2">

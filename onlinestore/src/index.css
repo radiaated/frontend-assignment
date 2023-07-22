@@ -24,12 +24,8 @@
   }
 
   .btn-full {
-    @apply bg-violet-800 text-zinc-50 font-medium text-xl p-4 w-full block text-center rounded-sm hover:bg-violet-700;
+    @apply bg-violet-800 text-zinc-50 font-medium text-xl p-4 w-full block text-center rounded-sm hover:bg-violet-700 active:hover:bg-violet-800;
   }
-
-  /* .next-pg-btn {
-    @apply 
-  } */
 }
 
 input[type="number"]::-webkit-inner-spin-button,

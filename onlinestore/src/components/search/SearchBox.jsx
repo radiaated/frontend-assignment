@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 const SearchBox = () => {
-  const [qs, setQs] = useSearchParams();
   const [search, setSearch] = useState("");
+  const [qs, setQs] = useSearchParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (qs.get("q")) {
+      setSearch(qs.get("q"));
+    }
+  }, []);
+
   return (
     <form
       className="relative text-md flex z-45"
@@ -20,7 +27,7 @@ const SearchBox = () => {
         placeholder="Iphone"
       />
       <div className="absolute top-3 left-2 flex items-">
-        <i class="fa-solid fa-magnifying-glass text-zinc-800"></i>
+        <i className="fa-solid fa-magnifying-glass text-zinc-800"></i>
       </div>
       <input
         type="submit"
@@ -29,7 +36,7 @@ const SearchBox = () => {
             navigate(`/search?q=${search}`);
           }
         }}
-        className="bg-violet-600 block border border-violet-500 ml-2 px-4 py-2 rounded-sm cursor-pointer hover:bg-violet-500 active:bg-violet-700 text-zinc-50"
+        className="bg-violet-600 block border border-violet-500 ml-2 px-4 py-2 rounded-sm cursor-pointer hover:bg-violet-700 active:bg-violet-800 text-zinc-50"
       />
     </form>
   );

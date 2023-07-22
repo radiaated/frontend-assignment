@@ -9,21 +9,17 @@ const ProductList = ({ category }) => {
   const [pages, setPages] = useState(5);
 
   const fetchProductByCategory = (skip, category) => {
-    console.log(category);
     if (category) {
       return axios.get(
         `https://dummyjson.com/products/category/${category.toLowerCase()}?limit=5&skip=${skip}`
       );
     }
-    console.log("uwu");
+
     return axios.get(
       `${import.meta.env.VITE_API_URL}/products?limit=5&skip=${skip}`
     );
   };
 
-  // const { data } = useQuery(["product-category", skip], (skip) =>
-  //   fetchProductByCategory(skip)
-  // );
   const { data, isLoading, isError } = useQuery({
     queryKey: [
       `product-category-${category ? category : "all"}`,
@@ -32,7 +28,6 @@ const ProductList = ({ category }) => {
     ],
     queryFn: () => fetchProductByCategory(skip, category),
     onSuccess: (q) => {
-      console.log(q);
       setPages(q.data.total / 5);
     },
   });
@@ -47,7 +42,10 @@ const ProductList = ({ category }) => {
       <div className="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
         {isLoading ? (
           Array.from(Array(5).keys()).map((k) => (
-            <div className="animate-pulse h-64 w-full bg-zinc-200 rounded-sm"></div>
+            <div
+              key={k}
+              className="animate-pulse h-64 w-full bg-zinc-200 rounded-sm"
+            ></div>
           ))
         ) : isError ? (
           <div className="col-span-5 opa text-center text-red-500 h-64 w-full">
@@ -56,6 +54,7 @@ const ProductList = ({ category }) => {
         ) : (
           data?.data.products.map((product) => (
             <Product
+              key={product.id}
               product={product}
               isLoading={isLoading}
               isError={isError}

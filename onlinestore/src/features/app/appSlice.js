@@ -21,6 +21,7 @@ export const appSlice = createSlice({
     },
     removeFromCart: (state, action) => {
       state.cart.splice(action.payload, 1);
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
   },
 });

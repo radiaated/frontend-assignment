@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useQuery, useMutation } from "react-query";
+import { useQuery } from "react-query";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import StarRating from "../utils/StarRating";
 import { appActions } from "../../features/app/appSlice";
@@ -14,15 +14,12 @@ const ProductPage = () => {
 
   const dispatch = useDispatch();
 
-  const cartState = useSelector((state) => state.app);
-
   const [imageHover, setImageHover] = useState(0);
 
   const {
     data: product,
     isLoading,
     isError,
-    error,
   } = useQuery({
     queryKey: ["product", params.id],
     queryFn: () => fetchProductById(params.id),
@@ -56,6 +53,18 @@ const ProductPage = () => {
       ) : (
         <>
           <div className="col-span-4">
+            <div className="text-xs flex gap-2 items-center text-zinc-700">
+              <Link className="hover:underline" to="/">
+                Online Store
+              </Link>{" "}
+              <i class="fa-solid fa-caret-right"></i>{" "}
+              <Link
+                className="hover:underline"
+                to={`/product/${product?.data.id}`}
+              >
+                {product?.data.title}
+              </Link>
+            </div>
             <h3 className="mb-0">{product?.data.title}</h3>
             <div className="flex gap-2 text-sm items-center mb-2">
               <span className="hover:underline cursor-default">
@@ -77,6 +86,7 @@ const ProductPage = () => {
               <div className="flex img-scroll scroll- md:flex-col object-cover gap-4 w-full mb-2 py-2">
                 {product?.data.images.map((img, ind) => (
                   <img
+                    key={ind}
                     src={img}
                     className={`block h-16 w-full object-cover border border-zinc-300 rounded-md hover:outline hover:outline-1 hover:outline-zinc-800 ${
                       imageHover == ind ? "outline outline-1" : ""
@@ -127,14 +137,14 @@ const ProductPage = () => {
             <hr />
             <Link className="btn-full">Checkout</Link>
             <button
-              className="border border-violet-800 text-violet-800 font-medium text-xl p-4 w-full block text-center rounded-sm hover:bg-violet-800 hover:text-zinc-50 "
+              className="border border-violet-800 text-violet-800 font-medium text-xl p-4 w-full block text-center rounded-sm hover:bg-violet-100 active:bg-violet-200"
               onClick={() => {
                 dispatch(
                   appActions.addToCart({ ...product?.data, quantity: qty })
                 );
               }}
             >
-              Add to cart <i class="fa-solid fa-cart-plus"></i>
+              Add to cart <i className="fa-solid fa-cart-plus"></i>
             </button>
           </div>
         </>

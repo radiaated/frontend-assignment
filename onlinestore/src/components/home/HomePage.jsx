@@ -8,8 +8,8 @@ const HomePage = () => {
 
   return (
     <div className="divide-y divide-y-zinc-500">
-      {categories.map((c) => (
-        <ProductList category={c} />
+      {categories.map((c, ind) => (
+        <ProductList key={ind} category={c} />
       ))}
       <ProductList category={null} />
     </div>

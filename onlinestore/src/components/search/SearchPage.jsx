@@ -29,11 +29,11 @@ const SearchPage = () => {
   return (
     <div className="min-h-[50vh]">
       <div className="mb-2">
-        <h5 className="mb-2 font-medium">Search</h5>
+        <h5 className="mb-2 font-medium text-2xl">Search</h5>
         <SearchBox />
       </div>
 
-      <h2>Search Results</h2>
+      <h5 className="text-lg font-medium">Search Results</h5>
 
       <p className="mb-2 text-sm">
         {qs.get("q")?.length > 0 ? `"${qs.get("q")}"` : "No search"}
@@ -42,7 +42,10 @@ const SearchPage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {isLoading ? (
           Array.from(Array(5).keys()).map((k) => (
-            <div className="animate-pulse h-64 w-full bg-zinc-200 rounded-sm"></div>
+            <div
+              key={k}
+              className="animate-pulse h-64 w-full bg-zinc-200 rounded-sm"
+            ></div>
           ))
         ) : isError ? (
           <div className="col-span-5 text-center text-red-500 h-64 w-full">
@@ -53,6 +56,7 @@ const SearchPage = () => {
         ) : (
           data?.data.products.map((product) => (
             <Product
+              key={product.id}
               product={product}
               isLoading={isLoading}
               isError={isError}
