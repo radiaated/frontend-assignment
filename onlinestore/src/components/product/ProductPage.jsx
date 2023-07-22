@@ -53,11 +53,11 @@ const ProductPage = () => {
       ) : (
         <>
           <div className="col-span-4">
-            <div className="text-xs flex gap-2 items-center text-zinc-700">
+            <div className="text-xs flex gap-2 items-center text-zinc-700 mb-2">
               <Link className="hover:underline" to="/">
                 Online Store
               </Link>{" "}
-              <i class="fa-solid fa-caret-right"></i>{" "}
+              <i className="fa-solid fa-caret-right"></i>{" "}
               <Link
                 className="hover:underline"
                 to={`/product/${product?.data.id}`}
@@ -112,6 +112,7 @@ const ProductPage = () => {
 
             <hr />
             <div className="space-y-2">
+              <span className="text-sm">In stock: {product?.data.stock}</span>
               <h4>Quantity</h4>
               <QuantityBox
                 stock={product?.data.stock}

@@ -15,7 +15,7 @@ export const appSlice = createSlice({
         state.cart[state.cart.findIndex((c) => c.id == action.payload.id)] =
           action.payload;
       } else {
-        state.cart = [...state.cart, action.payload];
+        state.cart.unshift(action.payload);
         localStorage.setItem("cart", JSON.stringify(state.cart));
       }
     },

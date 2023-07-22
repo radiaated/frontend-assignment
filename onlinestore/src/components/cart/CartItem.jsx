@@ -35,7 +35,7 @@ const CartItem = ({ cart, ind }) => {
         </div>
       </div>
       <div className="flex flex-col">
-        <div className="mb-1 text-sm italic">Quantity: {cart.quantity}</div>
+        <div className="mb-1 text-sm">Quantity: {cart.quantity}</div>
 
         <div className="text-xl font-semibold">
           ${" "}

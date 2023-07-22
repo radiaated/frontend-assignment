@@ -10,7 +10,12 @@ const QuantityBox = ({ stock, qty, setQty }) => {
         -
       </button>
 
-      <input type="number" className="bg-zinc-50 w-16 p-2" value={qty} />
+      <input
+        type="number"
+        className="bg-zinc-50 w-16 p-2"
+        value={qty}
+        onChange={() => {}}
+      />
       <button
         className="bg-violet-900 text-white text-lg px-4 py-3 hover:bg-violet-800 active:bg-violet-950"
         onClick={() =>
