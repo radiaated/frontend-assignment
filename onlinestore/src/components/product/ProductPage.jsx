@@ -93,6 +93,7 @@ const ProductPage = () => {
                     }`}
                     onMouseOver={() => setImageHover(ind)}
                     onClick={() => setImageHover(ind)}
+                    loading="lazy"
                   />
                 ))}
               </div>
@@ -101,6 +102,7 @@ const ProductPage = () => {
                   src={product?.data.images[imageHover]}
                   alt=""
                   className="block w-full h-96 object-contain rounded-sm border border-zinc-300 shadow-md"
+                  loading="lazy"
                 />
               </div>
             </div>

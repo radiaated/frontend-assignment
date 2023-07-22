@@ -40,6 +40,7 @@ const Header = () => {
         <Link to="/" className="text-xl tracking-wider font-semibold ">
           Online Store
         </Link>
+
         <div className="hidden md:flex gap-4">
           <NavLink
             to="/"
@@ -66,12 +67,17 @@ const Header = () => {
             Cart
           </NavLink>
         </div>
-        <button
-          className="border border-zinc-50 px-2 py-1 rounded-sm md:hidden"
-          onClick={() => setMenu((state) => !state)}
-        >
-          <i className="fa-solid fa-bars"></i>
-        </button>
+        <div className="space-x-4">
+          <Link to="/search" className="text-zinc-50 md:hidden">
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </Link>
+          <button
+            className="border border-zinc-50 px-2 py-1 rounded-sm md:hidden"
+            onClick={() => setMenu((state) => !state)}
+          >
+            <i className="fa-solid fa-bars"></i>
+          </button>
+        </div>
 
         <div
           className={`hidden md:flex ${

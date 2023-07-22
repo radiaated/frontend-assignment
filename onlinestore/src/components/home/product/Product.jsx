@@ -13,6 +13,7 @@ const Product = ({ product }) => {
           src={product.thumbnail}
           alt=""
           className="h-64 md:h-36 object-center object-cover w-full rounded-md"
+          loading="lazy"
         />
       </div>
       <div className="px-3 pb-1 space-y-1">
